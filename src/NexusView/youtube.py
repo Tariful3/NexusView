@@ -2,7 +2,7 @@ import re
 
 from IPython.display import HTML, display
 
-from NexusView import logger
+from NexusView.logger import logger
 from NexusView.custom_exception import InvalidURLException
 
 
