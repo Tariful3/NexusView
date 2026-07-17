@@ -10,7 +10,7 @@ __version__ = "0.0.3"
 REPO_NAME = "NexusView"
 AUTHOR_USER_NAME = "Tariful3"
 AUTHOR_EMAIL="tarifulsarkar009@gmail.com"
-SRC_REPO = "tariful-nexusview"
+SRC_REPO = "Nexusview_0.2"
 
 setuptools.setup(
     name=SRC_REPO,
