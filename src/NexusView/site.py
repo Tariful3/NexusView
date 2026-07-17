@@ -1,24 +1,41 @@
 import urllib.request
-from IPython import displayfrom
+
+from IPython import display
+
 from NexusView.custom_exception import InvalidURLException
 from NexusView.logger import logger
 
-def is_valid(url: str)-> bool:
-  try:
-    response_status = urllib.request.urlopen(url).getcode()
-    assert response_status == 200
-    return True
-  except Exception as e:
-    return False
+
+def is_valid(url: str) -> bool:
+    try:
+        response = urllib.request.urlopen(url)
+        return response.getcode() == 200
+    except Exception:
+        return False
 
 
-def render_site(URL: str, width: str = "100%", height: str = "600")-> str:
-  try:
-    if is_valid(URL):
-      response = display.IFrame(src=URL, width=width, height=height)
-      display.display(response)
-      return "success"
-    else:
-      raise "error"
-  except Exception as e:
-    raise
+def render_site(
+    url: str,
+    width: str = "100%",
+    height: str = "600",
+) -> str:
+    try:
+        if not is_valid(url):
+            raise InvalidURLException("Invalid URL")
+
+        response = display.IFrame(
+            src=url,
+            width=width,
+            height=height,
+        )
+        display.display(response)
+
+        logger.info(
+            "Successfully rendered website: %s",
+            url,
+        )
+
+        return "success"
+
+    except Exception:
+        raise
