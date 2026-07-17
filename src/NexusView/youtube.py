@@ -41,7 +41,7 @@ def render_youtube_video(
         display(HTML(iframe))
 
         logger.info(
-            "Successfully rendered YouTube video for URL: %s",
+            " Successfully rendered YouTube video for URL: %s",
             url,
         )
 
